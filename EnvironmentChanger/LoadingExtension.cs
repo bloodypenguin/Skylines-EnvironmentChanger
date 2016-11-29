@@ -10,7 +10,8 @@ namespace EnvironmentChanger
             base.OnCreated(loading);
             LoadPanelUI.Dispose();
             LoadMapPanelUI.Dispose();
-            NewGamePanelUI.Dispose();
+            //TODO(earalov): restore
+            //NewGamePanelUI.Dispose();
             LoadThemePanelUI.Dispose();
         }
 
@@ -33,8 +34,9 @@ namespace EnvironmentChanger
             base.OnReleased();
             LoadPanelUI.Dispose();
             LoadPanelUI.Initialize(false);
-            NewGamePanelUI.Dispose();
-            NewGamePanelUI.Initialize();
+            //TODO(earalov): restore
+            // NewGamePanelUI.Dispose();
+            //NewGamePanelUI.Initialize();
             LoadMapPanelUI.Dispose();
             LoadMapPanelUI.Initialize(false);
             LoadThemePanelUI.Dispose();

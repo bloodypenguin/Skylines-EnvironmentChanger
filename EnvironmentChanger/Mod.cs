@@ -14,9 +14,11 @@ namespace EnvironmentChanger
             {
                 if (!_bootstrapped)
                 {
-                    RedirectionUtil.RedirectType(typeof (NewGamePanelDetour));
+                    //TODO(earalov): restore
+                    //RedirectionUtil.RedirectType(typeof (NewGamePanelDetour));
                     LoadPanelUI.Initialize(false);
-                    NewGamePanelUI.Initialize();
+                    //TODO(earalov): restore
+                    //NewGamePanelUI.Initialize();
                     LoadMapPanelUI.Initialize(false);
                     LoadThemePanelUI.Initialize();
                     _bootstrapped = true;

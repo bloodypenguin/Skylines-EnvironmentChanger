@@ -28,7 +28,7 @@ namespace EnvironmentChanger.Detours
                 m_disableAchievements = Singleton<PluginManager>.instance.enabledModCount <= 0 ? SimulationMetaData.MetaBool.False : SimulationMetaData.MetaBool.True,
                 m_currentDateTime = DateTime.Now,
                 m_newGameAppVersion = 146924560U,
-                m_updateMode = SimulationManager.UpdateMode.NewGame
+                m_updateMode = SimulationManager.UpdateMode.NewGameFromMap
             };
             MapMetaData listingMetaData = this.GetListingMetaData(m_FileList.selectedIndex);
             if (listingMetaData.mapThemeRef != null)

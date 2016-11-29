@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using ColossalFramework.Packaging;
-using ColossalFramework.Steamworks;
 using ColossalFramework.UI;
 using UnityEngine;
 using static EnvironmentChanger.Util;
@@ -17,10 +16,10 @@ namespace EnvironmentChanger
         private string AS_IS = " (Don't change)";
         private string AS_IS_LEGACY = "(Don't change)";
 
-        protected readonly FieldInfo MetadataListField = typeof(LoadSavePanelBase<>).MakeGenericType(typeof(T))
-                        .GetField("m_MetaDataList", BindingFlags.NonPublic | BindingFlags.Instance);
         protected MethodInfo GetThemeStringMethod = typeof(LoadSavePanelBase<>).MakeGenericType(typeof(T)).
             GetMethod("GetThemeString", BindingFlags.NonPublic | BindingFlags.Static);
+        protected MethodInfo GetListingMetaDataMethod = typeof(LoadSavePanelBase<>).MakeGenericType(typeof(T)).
+            GetMethod("GetListingMetaData", BindingFlags.NonPublic | BindingFlags.Instance);
 
         protected UIDropDown envDropDown;
         protected UIDropDown themeDropDown;
@@ -74,7 +73,7 @@ namespace EnvironmentChanger
             {
                 return;
             }
-            var metadata = ((List<T>)MetadataListField.GetValue(saveLoadPanel))[sel];
+            var metadata = (T)GetListingMetaDataMethod.Invoke(saveLoadPanel, new object[] { sel });
             selectedMetaData = metadata;
             originalTheme = GetMetadataTheme(metadata);
             SetupEnvironmentDropDown(metadata);
@@ -101,7 +100,7 @@ namespace EnvironmentChanger
                     null
                 }) + AS_IS);
             }
-            var winterAvailable = Steam.IsDlcInstalled(420610U);
+            var winterAvailable = SteamHelper.IsDLCOwned(SteamHelper.DLC.SnowFallDLC);
             envList.AddRange(from env in Constants.Envs
                              where env != WINTER || winterAvailable
                              select (string)GetThemeStringMethod.Invoke(null, new object[]
