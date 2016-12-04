@@ -18,6 +18,7 @@ namespace EnvironmentChanger
             }
             RedirectionUtil.RedirectType(typeof(LoadSavePanelBaseDetour));
             RedirectionUtil.RedirectType(typeof(NewGamePanelDetour));
+            RedirectionUtil.RedirectType(typeof(NewScenarioGamePanelDetour));
             _detoured = true;
         }
 
@@ -27,9 +28,11 @@ namespace EnvironmentChanger
             {
                 if (!_bootstrapped)
                 {
-                    LoadPanelUI.Initialize(false);
+                    LoadPanelUI.Initialize();
+                    NewGamePanelUI.Initialize();
+                    NewScenarioGamePanelUI.Initialize();
                     //TODO(earalov): restore
-                    //NewGamePanelUI.Initialize();
+                    //
                     //                    LoadMapPanelUI.Initialize(false);
                     //                    LoadThemePanelUI.Initialize();
                     _bootstrapped = true;

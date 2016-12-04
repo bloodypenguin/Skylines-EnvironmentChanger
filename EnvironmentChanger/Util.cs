@@ -21,6 +21,11 @@ namespace EnvironmentChanger
             {
                 return mapThemeMetadata.environment;
             }
+            var scenarioMetadata = metadata as ScenarioMetaData;
+            if (scenarioMetadata != null)
+            {
+                return scenarioMetadata.environment;
+            }
             throw new Exception("Unsupported metadata!");
         }
 
@@ -40,6 +45,11 @@ namespace EnvironmentChanger
             if (mapThemeMetadata != null)
             {
                 return mapThemeMetadata.mapThemeRef;
+            }
+            var scenarioMetadata = metadata as ScenarioMetaData;
+            if (scenarioMetadata != null)
+            {
+                return scenarioMetadata.mapThemeRef;
             }
             throw new Exception("Unsupported metadata!");
         }

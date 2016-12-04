@@ -9,10 +9,10 @@ namespace EnvironmentChanger
         {
             base.OnCreated(loading);
             LoadPanelUI.Dispose();
-            LoadMapPanelUI.Dispose();
-            //TODO(earalov): restore
-            //NewGamePanelUI.Dispose();
-            LoadThemePanelUI.Dispose();
+//            LoadMapPanelUI.Dispose();
+            NewGamePanelUI.Dispose();
+            NewScenarioGamePanelUI.Dispose();
+            //            LoadThemePanelUI.Dispose();
         }
 
         public override void OnLevelLoaded(LoadMode mode)
@@ -20,12 +20,12 @@ namespace EnvironmentChanger
             base.OnLevelLoaded(mode);
             if (mode == LoadMode.LoadGame || mode == LoadMode.NewGame)
             {
-                LoadPanelUI.Initialize(true);
+                LoadPanelUI.Initialize();
             }
             else if (mode == LoadMode.LoadMap || mode == LoadMode.NewMap)
             {
-                LoadMapPanelUI.Initialize(true);
-                LoadThemePanelUI.Initialize();
+//                LoadMapPanelUI.Initialize(true);
+//                LoadThemePanelUI.Initialize();
             }
         }
 
@@ -33,14 +33,15 @@ namespace EnvironmentChanger
         {
             base.OnReleased();
             LoadPanelUI.Dispose();
-            LoadPanelUI.Initialize(false);
-            //TODO(earalov): restore
-            // NewGamePanelUI.Dispose();
-            //NewGamePanelUI.Initialize();
-            LoadMapPanelUI.Dispose();
-            LoadMapPanelUI.Initialize(false);
-            LoadThemePanelUI.Dispose();
-            LoadThemePanelUI.Initialize();
+            LoadPanelUI.Initialize();
+            NewGamePanelUI.Dispose();
+            NewGamePanelUI.Initialize();
+            NewScenarioGamePanelUI.Dispose();
+            NewScenarioGamePanelUI.Initialize();
+            //            LoadMapPanelUI.Dispose();
+            //            LoadMapPanelUI.Initialize(false);
+            //            LoadThemePanelUI.Dispose();
+            //            LoadThemePanelUI.Initialize();
         }
     }
 }

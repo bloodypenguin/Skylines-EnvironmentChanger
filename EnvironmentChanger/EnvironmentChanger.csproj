@@ -35,12 +35,14 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Detours\LoadSavePanelBaseType.cs" />
     <Compile Include="Detours\LoadSavePanelBaseDetour.cs" />
+    <Compile Include="Detours\NewScenarioGamePanelDetour.cs" />
     <Compile Include="Detours\NewGamePanelDetour.cs" />
     <Compile Include="LoadingExtension.cs" />
     <Compile Include="LoadMapPanelUI.cs" />
     <Compile Include="LoadThemePanelUI.cs" />
     <Compile Include="NewGamePanelUI.cs" />
     <Compile Include="Mod.cs" />
+    <Compile Include="NewScenarioGamePanelUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LoadPanelUI.cs" />
     <Compile Include="Redirection\RedirectionHelper.cs" />

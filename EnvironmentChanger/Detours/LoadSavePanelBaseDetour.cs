@@ -10,7 +10,7 @@ namespace EnvironmentChanger.Detours
     public class LoadSavePanelBaseDetour : LoadSavePanelBase<MetaData>
     {
         [RedirectMethod]
-        protected void RebuildThemeDictionary()
+        protected new void RebuildThemeDictionary()
         {
             if (this.m_Themes == null)
                 return;

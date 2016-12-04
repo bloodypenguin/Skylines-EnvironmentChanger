@@ -1,30 +1,29 @@
-﻿using System.Reflection;
-using ColossalFramework.UI;
+﻿using ColossalFramework.UI;
 using EnvironmentChanger.Detours;
 using UnityEngine;
 
 namespace EnvironmentChanger
 {
-    public class NewGamePanelUI : AbstractUI<MapMetaData>
+    public class NewScenarioGamePanelUI : AbstractUI<ScenarioMetaData>
     {
         private UILabel label;
         private UIPanel overridePanel;
 
         public static void Initialize()
         {
-            var goName = "EnvironmentChangerNewGamePanel";           
-            if (GameObject.Find(goName)!= null)
+            var goName = "EnvironmentChangerNewScenarioGamePanel";
+            if (GameObject.Find(goName) != null)
             {
                 return;
             }
             NewGamePanelDetour.m_forceEnvironment = null;
             var go = new GameObject(goName);
-            go.AddComponent<NewGamePanelUI>();
+            go.AddComponent<NewScenarioGamePanelUI>();
         }
 
         public static void Dispose()
         {
-            var goName = "EnvironmentChangerNewGamePanel";
+            var goName = "EnvironmentChangerNewScenarioGamePanel";
             var go = GameObject.Find(goName);
             if (go == null)
             {
@@ -37,12 +36,12 @@ namespace EnvironmentChanger
         {
             if (label == null)
             {
-                var panelGo = GameObject.Find("NewGamePanel");
+                var panelGo = GameObject.Find("NewScenarioGamePanel");
                 if (panelGo == null)
                 {
                     return;
                 }
-                saveLoadPanel = panelGo.GetComponent<NewGamePanel>();
+                saveLoadPanel = panelGo.GetComponent<NewScenarioGamePanel>();
                 var mapList = saveLoadPanel.Find<UIListBox>("MapList");
                 mapList.eventSelectedIndexChanged += OnListingSelectionChanged;
 
@@ -76,7 +75,7 @@ namespace EnvironmentChanger
             {
                 return;
             }
-            NewGamePanelDetour.m_forceEnvironment = env;
+            NewScenarioGamePanelDetour.m_forceEnvironment = env;
         }
     }
 }
