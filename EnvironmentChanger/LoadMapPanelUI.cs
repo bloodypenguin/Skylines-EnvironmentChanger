@@ -47,8 +47,8 @@ namespace EnvironmentChanger
                 saveList.eventSelectedIndexChanged += OnListingSelectionChanged;
                 var loadPanel = panelGo.GetComponent<UIPanel>();
                 overridePanel = loadPanel.Find<UIPanel>("OverridePanel");
-                var overrideMapTheme = loadPanel.Find<UIDropDown>("OverrideMapTheme");
-                Destroy(overrideMapTheme);
+//                var overrideMapTheme = loadPanel.Find<UIDropDown>("OverrideMapTheme");
+//                Destroy(overrideMapTheme);
 
                 mapThemeLabel = loadPanel.Find<UILabel>("MapThemeLabel");
                 mapThemeLabel.text = "Environment";
@@ -60,37 +60,37 @@ namespace EnvironmentChanger
                 envDropDown.relativePosition = label.relativePosition;
                 envDropDown.eventSelectedIndexChanged += OnEnvDropDownEventSelectedIndexChanged;
 
-                var newMapThemeLabel = mapThemeLabel.parent.AddUIComponent<UILabel>();
-                newMapThemeLabel.text = "Custom Map Theme";
-                newMapThemeLabel.textScale = mapThemeLabel.textScale;
-                newMapThemeLabel.textColor = mapThemeLabel.textColor;
-                newMapThemeLabel.relativePosition = new Vector3(envDropDown.relativePosition.x, envDropDown.relativePosition.y + envDropDown.height);
+//                var newMapThemeLabel = mapThemeLabel.parent.AddUIComponent<UILabel>();
+//                newMapThemeLabel.text = "Custom Map Theme";
+//                newMapThemeLabel.textScale = mapThemeLabel.textScale;
+//                newMapThemeLabel.textColor = mapThemeLabel.textColor;
+//                newMapThemeLabel.relativePosition = new Vector3(envDropDown.relativePosition.x, envDropDown.relativePosition.y + envDropDown.height);
 
 
-                themeDropDown = UIUtils.CreateDropDown(newMapThemeLabel.parent);
-                themeDropDown.name = "MapThemeDropDown";
-                themeDropDown.size = new Vector2(244.0f, 32.0f);
-                themeDropDown.textScale = label.textScale;
-                themeDropDown.relativePosition = new Vector3(newMapThemeLabel.relativePosition.x, newMapThemeLabel.relativePosition.y + newMapThemeLabel.height);
-                themeDropDown.eventSelectedIndexChanged += OnThemeDropDownEventSelectedIndexChanged;
-                if (inGame)
-                {
-                    SimulationManager.instance.AddAction(() =>
-                    {
-                        typeof(LoadMapPanel).GetField("m_ThemeOverrideDropDown", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(saveLoadPanel, null);
-                    });
-                }
-                else {
-                    typeof(LoadMapPanel).GetField("m_ThemeOverrideDropDown", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(saveLoadPanel, null);
-                }
+//                themeDropDown = UIUtils.CreateDropDown(newMapThemeLabel.parent);
+//                themeDropDown.name = "MapThemeDropDown";
+//                themeDropDown.size = new Vector2(244.0f, 32.0f);
+//                themeDropDown.textScale = label.textScale;
+//                themeDropDown.relativePosition = new Vector3(newMapThemeLabel.relativePosition.x, newMapThemeLabel.relativePosition.y + newMapThemeLabel.height);
+//                themeDropDown.eventSelectedIndexChanged += OnThemeDropDownEventSelectedIndexChanged;
+//                if (inGame)
+//                {
+//                    SimulationManager.instance.AddAction(() =>
+//                    {
+//                        typeof(LoadMapPanel).GetField("m_ThemeOverrideDropDown", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(saveLoadPanel, null);
+//                    });
+//                }
+//                else {
+//                    typeof(LoadMapPanel).GetField("m_ThemeOverrideDropDown", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(saveLoadPanel, null);
+//                }
             }
             if (label == null || !label.parent.isVisible)
             {
                 return;
             }
             label.Hide();
-            mapThemeLabel.Show();
-            overridePanel.Hide();
+//            mapThemeLabel.Show();
+//            overridePanel.Hide();
         }
 
         protected override void ForceEnvironment(string env)

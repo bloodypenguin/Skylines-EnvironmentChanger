@@ -33,6 +33,8 @@
   <ItemGroup>
     <Compile Include="AbstractUI.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Detours\LoadSavePanelBaseType.cs" />
+    <Compile Include="Detours\LoadSavePanelBaseDetour.cs" />
     <Compile Include="Detours\NewGamePanelDetour.cs" />
     <Compile Include="LoadingExtension.cs" />
     <Compile Include="LoadMapPanelUI.cs" />
@@ -48,6 +50,7 @@
     <Compile Include="Redirection\TargetTypeAttribute.cs" />
     <Compile Include="Redirection\Tuple.cs" />
     <Compile Include="UIUtils.cs" />
+    <Compile Include="UpdateHook.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +66,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Games\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\ICities.dll</HintPath>
     </Reference>
+    <Reference Include="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Games\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.dll</HintPath>

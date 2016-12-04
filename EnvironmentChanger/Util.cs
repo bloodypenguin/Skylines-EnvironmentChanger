@@ -43,28 +43,5 @@ namespace EnvironmentChanger
             }
             throw new Exception("Unsupported metadata!");
         }
-
-        public static void SetMetadataTheme(MetaData metadata, string theme)
-        {
-            var mapMetadata = metadata as MapMetaData;
-            if (mapMetadata != null)
-            {
-                mapMetadata.mapThemeRef = theme;
-                return;
-            }
-            var saveGameMetadata = metadata as SaveGameMetaData;
-            if (saveGameMetadata != null)
-            {
-                saveGameMetadata.mapThemeRef = theme;
-                return;
-            }
-            var mapThemeMetadata = metadata as MapThemeMetaData;
-            if (mapThemeMetadata != null)
-            {
-                mapThemeMetadata.mapThemeRef = theme;
-                return;
-            }
-            throw new Exception("Unsupported metadata!");
-        }
     }
 }

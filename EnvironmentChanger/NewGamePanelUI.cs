@@ -53,7 +53,7 @@ namespace EnvironmentChanger
 
                 overridePanel = panel.Find<UIPanel>("OverridePanel");
                 var overrideMapTheme = panel.Find<UIDropDown>("OverrideMapTheme");
-                Destroy(overrideMapTheme);
+//                Destroy(overrideMapTheme);
 
                 envDropDown = UIUtils.CreateDropDown(label.parent);
                 envDropDown.name = "EnvironmentDropDown";
@@ -68,14 +68,14 @@ namespace EnvironmentChanger
                 newMapThemeLabel.textColor = label.textColor;
                 newMapThemeLabel.relativePosition = new Vector3(envDropDown.relativePosition.x, envDropDown.relativePosition.y + envDropDown.height);
 
-                themeDropDown = UIUtils.CreateDropDown(newMapThemeLabel.parent);
-                themeDropDown.name = "MapThemeDropDown";
-                themeDropDown.size = new Vector2(196, 32.0f);
-                themeDropDown.textScale = label.textScale;
-                themeDropDown.relativePosition = new Vector3(newMapThemeLabel.relativePosition.x, newMapThemeLabel.relativePosition.y + newMapThemeLabel.height);
-                themeDropDown.eventSelectedIndexChanged += OnThemeDropDownEventSelectedIndexChanged;
-                
-                typeof(NewGamePanel).GetField("m_ThemeOverrideDropDown", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(saveLoadPanel, null);
+//                themeDropDown = UIUtils.CreateDropDown(newMapThemeLabel.parent);
+//                themeDropDown.name = "MapThemeDropDown";
+//                themeDropDown.size = new Vector2(196, 32.0f);
+//                themeDropDown.textScale = label.textScale;
+//                themeDropDown.relativePosition = new Vector3(newMapThemeLabel.relativePosition.x, newMapThemeLabel.relativePosition.y + newMapThemeLabel.height);
+//                themeDropDown.eventSelectedIndexChanged += OnThemeDropDownEventSelectedIndexChanged;
+//                
+//                typeof(NewGamePanel).GetField("m_ThemeOverrideDropDown", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(saveLoadPanel, null);
             }
             if (label == null || !label.parent.isVisible)
             {

@@ -18,18 +18,12 @@ namespace EnvironmentChanger.Detours
             //begin mod
             var m_MapName = this.Find<UITextField>("MapName");
             var m_FileList = this.Find<UIListBox>("MapList");
-            SimulationMetaData ngs = new SimulationMetaData()
-            {
-                m_CityName = m_MapName.text,
-                m_environment = m_forceEnvironment,
-                //end mod
-                m_gameInstanceIdentifier = Guid.NewGuid().ToString(),
-                m_invertTraffic = !this.Find<UICheckBox>("InvertTraffic").isChecked ? SimulationMetaData.MetaBool.False : SimulationMetaData.MetaBool.True,
-                m_disableAchievements = Singleton<PluginManager>.instance.enabledModCount <= 0 ? SimulationMetaData.MetaBool.False : SimulationMetaData.MetaBool.True,
-                m_currentDateTime = DateTime.Now,
-                m_newGameAppVersion = 146924560U,
-                m_updateMode = SimulationManager.UpdateMode.NewGameFromMap
-            };
+            //end mod
+            SimulationMetaData ngs = new SimulationMetaData() { m_CityName = m_MapName.text, m_gameInstanceIdentifier = Guid.NewGuid().ToString(), m_invertTraffic = !this.Find<UICheckBox>("InvertTraffic").isChecked ? SimulationMetaData.MetaBool.False : SimulationMetaData.MetaBool.True, m_disableAchievements = Singleton<PluginManager>.instance.enabledModCount <= 0 ? SimulationMetaData.MetaBool.False : SimulationMetaData.MetaBool.True, m_currentDateTime = DateTime.Now, m_newGameAppVersion = 159507472, m_updateMode = SimulationManager.UpdateMode.NewGameFromMap };
+            //begin mod
+            ngs.m_environment = m_forceEnvironment;
+            //end mod
+
             MapMetaData listingMetaData = this.GetListingMetaData(m_FileList.selectedIndex);
             if (listingMetaData.mapThemeRef != null)
             {

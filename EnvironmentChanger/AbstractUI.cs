@@ -11,7 +11,6 @@ namespace EnvironmentChanger
 {
     public abstract class AbstractUI<T> : LoadSavePanelBase<T> where T : MetaData
     {
-        private const string NO_THEME = "No Theme";
         private const string WINTER = "Winter";
         private string AS_IS = " (Don't change)";
         private string AS_IS_LEGACY = "(Don't change)";
@@ -20,10 +19,7 @@ namespace EnvironmentChanger
             GetMethod("GetListingMetaData", BindingFlags.NonPublic | BindingFlags.Instance);
 
         protected UIDropDown envDropDown;
-        protected UIDropDown themeDropDown;
         private T selectedMetaData;
-        private string originalTheme;
-        private readonly List<string> _themesIds = new List<string>();
         protected LoadSavePanelBase<T> saveLoadPanel;
 
 
@@ -43,15 +39,6 @@ namespace EnvironmentChanger
 
         protected abstract void ForceEnvironment(string env);
 
-        protected void ResetPreviousTheme()
-        {
-            if (selectedMetaData == null)
-            {
-                return;
-            }
-            SetMetadataTheme(selectedMetaData, originalTheme);
-        }
-
         private void ResetSelectedMetadata()
         {
             if (selectedMetaData == null)
@@ -59,9 +46,7 @@ namespace EnvironmentChanger
                 return;
             }
             ResetPreviousEnvironment();
-            ResetPreviousTheme();
             selectedMetaData = null;
-            originalTheme = null;
         }
 
         protected void OnListingSelectionChanged(UIComponent comp, int sel)
@@ -73,9 +58,7 @@ namespace EnvironmentChanger
             }
             var metadata = (T)GetListingMetaDataMethod.Invoke(saveLoadPanel, new object[] { sel });
             selectedMetaData = metadata;
-            originalTheme = GetMetadataTheme(metadata);
             SetupEnvironmentDropDown(metadata);
-            SetupThemeDropDown(metadata);
         }
 
         private void SetupEnvironmentDropDown(T metadata)
@@ -105,43 +88,6 @@ namespace EnvironmentChanger
             envDropDown.selectedIndex = 0;
         }
 
-        private void SetupThemeDropDown(T metadata)
-        {
-            if (themeDropDown == null)
-            {
-                return;
-            }
-            _themesIds.Clear();
-            var themeList = new List<string>();
-            if (GetMetadataTheme(metadata) == null)
-            {
-                _themesIds.Add(null);
-                themeList.Add(NO_THEME + AS_IS);
-            }
-            else
-            {
-                themeList.Add(GetThemeString(
-                    GetMetadataTheme(metadata),
-                    null,
-                    null
-                ) + AS_IS);
-            }
-            _themesIds.Add(null);
-            themeList.Add(NO_THEME);
-            foreach (var themeId in PackageManager.FilterAssets(UserAssetType.MapThemeMetaData)
-                .Select(asset => $"{asset.package.packageName}.{asset.name}"))
-            {
-                _themesIds.Add(themeId);
-                themeList.Add(GetThemeString(
-                    themeId,
-                    null,
-                    null
-                ));
-            }
-            themeDropDown.items = themeList.ToArray();
-            themeDropDown.selectedIndex = 0;
-        }
-
         protected void OnEnvDropDownEventSelectedIndexChanged(UIComponent component, int value)
         {
             ResetPreviousEnvironment();
@@ -159,26 +105,6 @@ namespace EnvironmentChanger
                 if (selectedMetaData != null)
                 {
                     ForceEnvironment(Constants.Envs[value - 1]);
-                }
-            }
-            else
-            {
-                throw new Exception("Wrong index!");
-            }
-        }
-
-        protected void OnThemeDropDownEventSelectedIndexChanged(UIComponent component, int value)
-        {
-            ResetPreviousTheme();
-            if (value <= 0)
-            {
-                return;
-            }
-            if (value < _themesIds.Count)
-            {
-                if (selectedMetaData != null)
-                {
-                    SetMetadataTheme(selectedMetaData, _themesIds[value]);
                 }
             }
             else

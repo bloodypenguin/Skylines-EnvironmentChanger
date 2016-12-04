@@ -61,24 +61,24 @@ namespace EnvironmentChanger
                 envDropDown.textScale = label.textScale;
                 envDropDown.relativePosition = label.relativePosition;
                 envDropDown.eventSelectedIndexChanged += OnEnvDropDownEventSelectedIndexChanged;
-                themeDropDown = UIUtils.CreateDropDown(overrideMapTheme.parent);
-                themeDropDown.name = "MapThemeDropDown";
-                themeDropDown.size = new Vector2(overrideMapTheme.width, 32.0f);
-                themeDropDown.textScale = label.textScale;
-                themeDropDown.relativePosition = new Vector3(overrideMapTheme.relativePosition.x, overrideMapTheme.relativePosition.y);
-                themeDropDown.eventSelectedIndexChanged += OnThemeDropDownEventSelectedIndexChanged;
-
-                Destroy(overrideMapTheme);
-                if (inGame)
-                {
-                    SimulationManager.instance.AddAction(() =>
-                    {
-                        typeof(LoadPanel).GetField("m_ThemeOverrideDropDown", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(saveLoadPanel, null);
-                    });
-                }
-                else {
-                    typeof(LoadPanel).GetField("m_ThemeOverrideDropDown", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(saveLoadPanel, null);
-                }
+//                themeDropDown = UIUtils.CreateDropDown(overrideMapTheme.parent);
+//                themeDropDown.name = "MapThemeDropDown";
+//                themeDropDown.size = new Vector2(overrideMapTheme.width, 32.0f);
+//                themeDropDown.textScale = label.textScale;
+//                themeDropDown.relativePosition = new Vector3(overrideMapTheme.relativePosition.x, overrideMapTheme.relativePosition.y);
+//                themeDropDown.eventSelectedIndexChanged += OnThemeDropDownEventSelectedIndexChanged;
+//
+//                Destroy(overrideMapTheme);
+//                if (inGame)
+//                {
+//                    SimulationManager.instance.AddAction(() =>
+//                    {
+//                        typeof(LoadPanel).GetField("m_ThemeOverrideDropDown", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(saveLoadPanel, null);
+//                    });
+//                }
+//                else {
+//                    typeof(LoadPanel).GetField("m_ThemeOverrideDropDown", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(saveLoadPanel, null);
+//                }
             }
             if (label == null || !label.parent.isVisible)
             {

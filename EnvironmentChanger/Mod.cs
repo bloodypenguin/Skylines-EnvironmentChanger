@@ -6,7 +6,20 @@ namespace EnvironmentChanger
 {
     public class Mod : IUserMod
     {
+        private static bool _detoured;
+
         private static bool _bootstrapped;
+
+        public Mod()
+        {
+            if (_detoured)
+            {
+                return;
+            }
+            RedirectionUtil.RedirectType(typeof(LoadSavePanelBaseDetour));
+            RedirectionUtil.RedirectType(typeof(NewGamePanelDetour));
+            _detoured = true;
+        }
 
         public string Name
         {
@@ -14,13 +27,14 @@ namespace EnvironmentChanger
             {
                 if (!_bootstrapped)
                 {
+
                     //TODO(earalov): restore
-                    //RedirectionUtil.RedirectType(typeof (NewGamePanelDetour));
-                    LoadPanelUI.Initialize(false);
+                    //
+                    //                    LoadPanelUI.Initialize(false);
                     //TODO(earalov): restore
                     //NewGamePanelUI.Initialize();
-                    LoadMapPanelUI.Initialize(false);
-                    LoadThemePanelUI.Initialize();
+                    //                    LoadMapPanelUI.Initialize(false);
+                    //                    LoadThemePanelUI.Initialize();
                     _bootstrapped = true;
                 }
                 return "Environment Changer";
