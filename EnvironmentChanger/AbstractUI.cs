@@ -9,15 +9,13 @@ using static EnvironmentChanger.Util;
 
 namespace EnvironmentChanger
 {
-    public abstract class AbstractUI<T> : MonoBehaviour where T : MetaData
+    public abstract class AbstractUI<T> : LoadSavePanelBase<T> where T : MetaData
     {
         private const string NO_THEME = "No Theme";
         private const string WINTER = "Winter";
         private string AS_IS = " (Don't change)";
         private string AS_IS_LEGACY = "(Don't change)";
 
-        protected MethodInfo GetThemeStringMethod = typeof(LoadSavePanelBase<>).MakeGenericType(typeof(T)).
-            GetMethod("GetThemeString", BindingFlags.NonPublic | BindingFlags.Static);
         protected MethodInfo GetListingMetaDataMethod = typeof(LoadSavePanelBase<>).MakeGenericType(typeof(T)).
             GetMethod("GetListingMetaData", BindingFlags.NonPublic | BindingFlags.Instance);
 
@@ -93,18 +91,16 @@ namespace EnvironmentChanger
             }
             else
             {
-                envList.Add((string)GetThemeStringMethod.Invoke(null, new object[]
-                {
+                envList.Add(GetThemeString(
                     null,
                     GetMetadataEnvironment(metadata),
                     null
-                }) + AS_IS);
+                ) + AS_IS);
             }
             var winterAvailable = SteamHelper.IsDLCOwned(SteamHelper.DLC.SnowFallDLC);
             envList.AddRange(from env in Constants.Envs
                              where env != WINTER || winterAvailable
-                             select (string)GetThemeStringMethod.Invoke(null, new object[]
-                             {null, env, null}));
+                             select GetThemeString(null, env, null));
             envDropDown.items = envList.ToArray();
             envDropDown.selectedIndex = 0;
         }
@@ -124,12 +120,11 @@ namespace EnvironmentChanger
             }
             else
             {
-                themeList.Add((string)GetThemeStringMethod.Invoke(null, new object[]
-                {
+                themeList.Add(GetThemeString(
                     GetMetadataTheme(metadata),
                     null,
                     null
-                }) + AS_IS);
+                ) + AS_IS);
             }
             _themesIds.Add(null);
             themeList.Add(NO_THEME);
@@ -137,12 +132,11 @@ namespace EnvironmentChanger
                 .Select(asset => $"{asset.package.packageName}.{asset.name}"))
             {
                 _themesIds.Add(themeId);
-                themeList.Add((string)GetThemeStringMethod.Invoke(null, new object[]
-                {
+                themeList.Add(GetThemeString(
                     themeId,
                     null,
                     null
-                }));
+                ));
             }
             themeDropDown.items = themeList.ToArray();
             themeDropDown.selectedIndex = 0;
