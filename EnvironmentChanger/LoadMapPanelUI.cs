@@ -51,7 +51,7 @@ namespace EnvironmentChanger
 //                Destroy(overrideMapTheme);
 
                 mapThemeLabel = loadPanel.Find<UILabel>("MapThemeLabel");
-                mapThemeLabel.text = "Environment";
+
                 label = loadPanel.Find<UILabel>("MapTheme");
                 envDropDown = UIUtils.CreateDropDown(label.parent);
                 envDropDown.name = "EnvironmentDropDown";

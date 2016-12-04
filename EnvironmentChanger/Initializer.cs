@@ -29,10 +29,14 @@ namespace EnvironmentChanger
                     NewGamePanelUI.Initialize(this.gameObject);
                     NewScenarioGamePanelUI.Initialize(this.gameObject);
                 }
+                if (ToolsModifierControl.toolController == null || ToolsModifierControl.toolController.m_mode == ItemClass.Availability.None || ToolsModifierControl.toolController.m_mode == ItemClass.Availability.ThemeEditor)
+                {
+                    LoadThemePanelUI.Initialize();
+                }
                 //TODO(earalov): restore
                 //
                 //                    LoadMapPanelUI.Initialize(false);
-                //                    LoadThemePanelUI.Initialize();
+                //                    
                 _initialized = true;
             }
         }
