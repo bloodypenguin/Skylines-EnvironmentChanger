@@ -23,6 +23,22 @@ namespace EnvironmentChanger
         protected LoadSavePanelBase<T> saveLoadPanel;
 
 
+        public virtual void Awake() //make base class method a stub
+        {
+
+        }
+
+        public virtual void OnClosed() //make base class method a stub
+        {
+
+        }
+
+        protected virtual void OnLocaleChanged() //make base class method a stub
+        {
+
+        }
+
+
         protected void OnDestroy()
         {
             ResetSelectedMetadata();

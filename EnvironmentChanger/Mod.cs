@@ -27,10 +27,7 @@ namespace EnvironmentChanger
             {
                 if (!_bootstrapped)
                 {
-
-                    //TODO(earalov): restore
-                    //
-                    //                    LoadPanelUI.Initialize(false);
+                    LoadPanelUI.Initialize(false);
                     //TODO(earalov): restore
                     //NewGamePanelUI.Initialize();
                     //                    LoadMapPanelUI.Initialize(false);
