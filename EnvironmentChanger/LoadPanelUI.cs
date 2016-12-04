@@ -7,30 +7,14 @@ namespace EnvironmentChanger
 {
     public class LoadPanelUI : AbstractUI<SaveGameMetaData>
     {
-        private static GameObject go;
         private UILabel label;
         private UILabel mapThemeLabel;
         private UIListBox saveList;
         private UIPanel overridePanel;
 
-        public static void Initialize()
+        public static void Initialize(GameObject go)
         {
-            if (go != null)
-            {
-                return;
-            }
-            go = new GameObject("EnvironmentChangerLoadPanel");
             go.AddComponent<LoadPanelUI>();
-        }
-
-        public static void Dispose()
-        {
-            if (go == null)
-            {
-                return;
-            }
-            DestroyImmediate(go);
-            go = null;
         }
 
         public void Update()

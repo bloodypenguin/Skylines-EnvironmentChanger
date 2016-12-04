@@ -8,8 +8,6 @@ namespace EnvironmentChanger
     {
         private static bool _detoured;
 
-        private static bool _bootstrapped;
-
         public Mod()
         {
             if (_detoured)
@@ -26,17 +24,7 @@ namespace EnvironmentChanger
         {
             get
             {
-                if (!_bootstrapped)
-                {
-                    LoadPanelUI.Initialize();
-                    NewGamePanelUI.Initialize();
-                    NewScenarioGamePanelUI.Initialize();
-                    //TODO(earalov): restore
-                    //
-                    //                    LoadMapPanelUI.Initialize(false);
-                    //                    LoadThemePanelUI.Initialize();
-                    _bootstrapped = true;
-                }
+                Initializer.Initialize();
                 return "Environment Changer";
             }
         }

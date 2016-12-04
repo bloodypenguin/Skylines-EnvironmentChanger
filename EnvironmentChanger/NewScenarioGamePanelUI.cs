@@ -9,27 +9,15 @@ namespace EnvironmentChanger
         private UILabel label;
         private UIPanel overridePanel;
 
-        public static void Initialize()
+        public static void Initialize(GameObject go)
         {
-            var goName = "EnvironmentChangerNewScenarioGamePanel";
-            if (GameObject.Find(goName) != null)
-            {
-                return;
-            }
-            NewGamePanelDetour.m_forceEnvironment = null;
-            var go = new GameObject(goName);
             go.AddComponent<NewScenarioGamePanelUI>();
         }
 
-        public static void Dispose()
+        protected override void Awake()
         {
-            var goName = "EnvironmentChangerNewScenarioGamePanel";
-            var go = GameObject.Find(goName);
-            if (go == null)
-            {
-                return;
-            }
-            DestroyImmediate(go);
+            base.Awake();
+            NewScenarioGamePanelDetour.m_forceEnvironment = null;
         }
 
         public void Update()

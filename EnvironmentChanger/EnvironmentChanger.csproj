@@ -37,7 +37,7 @@
     <Compile Include="Detours\LoadSavePanelBaseDetour.cs" />
     <Compile Include="Detours\NewScenarioGamePanelDetour.cs" />
     <Compile Include="Detours\NewGamePanelDetour.cs" />
-    <Compile Include="LoadingExtension.cs" />
+    <Compile Include="Initializer.cs" />
     <Compile Include="LoadMapPanelUI.cs" />
     <Compile Include="LoadThemePanelUI.cs" />
     <Compile Include="NewGamePanelUI.cs" />
