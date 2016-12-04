@@ -31,12 +31,12 @@ namespace EnvironmentChanger
                 }
                 if (ToolsModifierControl.toolController == null || ToolsModifierControl.toolController.m_mode == ItemClass.Availability.None || ToolsModifierControl.toolController.m_mode == ItemClass.Availability.ThemeEditor)
                 {
-                    LoadThemePanelUI.Initialize();
+                    LoadThemePanelUI.Initialize(this.gameObject);
                 }
-                //TODO(earalov): restore
-                //
-                //                    LoadMapPanelUI.Initialize(false);
-                //                    
+                if (ToolsModifierControl.toolController == null || ToolsModifierControl.toolController.m_mode == ItemClass.Availability.None || ToolsModifierControl.toolController.m_mode == ItemClass.Availability.MapEditor)
+                {
+                    LoadMapPanelUI.Initialize(this.gameObject);
+                }                  
                 _initialized = true;
             }
         }

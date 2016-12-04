@@ -5,29 +5,13 @@ namespace EnvironmentChanger
 {
     public class LoadThemePanelUI : AbstractUI<MapThemeMetaData>
     {
-        private static GameObject go;
         private UILabel label;
         private UILabel mapThemeLabel;
         private UIListBox saveList;
 
-        public static void Initialize()
+        public static void Initialize(GameObject go)
         {
-            if (go != null)
-            {
-                return;
-            }
-            go = new GameObject("EnvironmentChangerLoadThemePanel");
             go.AddComponent<LoadThemePanelUI>();
-        }
-
-        public static void Dispose()
-        {
-            if (go == null)
-            {
-                return;
-            }
-            DestroyImmediate(go);
-            go = null;
         }
 
         public void Update()
@@ -49,7 +33,7 @@ namespace EnvironmentChanger
 
                 envDropDown = UIUtils.CreateDropDown(label.parent);
                 envDropDown.name = "EnvironmentDropDown";
-                envDropDown.size = new Vector2(196, 32.0f);
+                envDropDown.size = new Vector2(196, 27.0f);
                 envDropDown.textScale = label.textScale;
                 envDropDown.relativePosition = label.relativePosition;
                 envDropDown.eventSelectedIndexChanged += OnEnvDropDownEventSelectedIndexChanged;

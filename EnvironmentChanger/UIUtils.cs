@@ -36,7 +36,6 @@ namespace EnvironmentChanger
             {
                 dropDown.listWidth = (int)t.x;
             };
-
             return dropDown;
         }
     }
