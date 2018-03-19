@@ -34,7 +34,7 @@ namespace EnvironmentChanger.Detours
                     ngs.m_MapThemeMetaData.SetSelfRef(assetByName);
                 }
             }
-            Singleton<LoadingManager>.instance.LoadLevel(this.GetListingData(m_FileList.selectedIndex), "Game", "InGame", ngs);
+            Singleton<LoadingManager>.instance.LoadLevel(this.GetListingData(m_FileList.selectedIndex), "Game", "InGame", ngs, false);
             UIView.library.Hide(this.GetType().Name, 1);
         }
     }
