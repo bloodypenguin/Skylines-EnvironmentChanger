@@ -33,8 +33,8 @@ namespace EnvironmentChanger
                 var mapList = saveLoadPanel.Find<UIListBox>("MapList");
                 mapList.eventSelectedIndexChanged += OnListingSelectionChanged;
 
-                var panel = panelGo.GetComponent<UIPanel>().Find<UIPanel>("Panel MapTheme");
-                overridePanel = panel.Find<UIPanel>("OverridePanel");
+                var panel = panelGo.GetComponent<UIPanel>();
+                overridePanel = panel.Find<UIPanel>("MapThemeOverridePanel");
                 var overrideMapTheme = panel.Find<UIDropDown>("OverrideMapTheme");
 
                 label = panel.Find<UILabel>("MapTheme");
