@@ -35,18 +35,17 @@ namespace EnvironmentChanger
                 mapList.eventSelectedIndexChanged += OnListingSelectionChanged;
 
                 var panel = panelGo.GetComponent<UIPanel>();
-                overridePanel = panel.Find<UIPanel>("MapThemeOverridePanel");
-                var overrideMapTheme = panel.Find<UIDropDown>("OverrideMapTheme");
                 label = panel.Find<UILabel>("MapTheme");
-                envDropDown = UIUtils.CreateDropDown(label.parent);
+                envDropDown = UIUtils.CreateDropDown(label);
                 envDropDown.name = "EnvironmentDropDown";
                 envDropDown.size = new Vector2(196, 27.0f);
                 envDropDown.textScale = label.textScale;
-                envDropDown.relativePosition = new Vector3(label.relativePosition.x, overrideMapTheme.relativePosition.y);
+                envDropDown.relativePosition = new Vector3(label.relativePosition.x, label.height);
                 envDropDown.eventSelectedIndexChanged += OnEnvDropDownEventSelectedIndexChanged;
 
-                overrideMapTheme.relativePosition = new Vector3(overrideMapTheme.relativePosition.x + (envDropDown.width - label.width), overrideMapTheme.relativePosition.y);
-
+                overridePanel = panel.Find<UIPanel>("OverridePanel");
+                overridePanel.AlignTo(label, UIAlignAnchor.TopRight);
+                overridePanel.relativePosition = new Vector3(0, label.height + envDropDown.height + 5);
             }
             if (label == null || !label.parent.isVisible)
             {
